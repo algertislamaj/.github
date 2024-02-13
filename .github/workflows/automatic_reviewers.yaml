@@ -4,6 +4,7 @@ name: Add Reviewers
 
 on:
   pull_request:
+    types: [opened, edited]
 
 jobs:
   build:
