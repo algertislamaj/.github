@@ -2,7 +2,7 @@ name: PR Template
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   update_pr_description:
