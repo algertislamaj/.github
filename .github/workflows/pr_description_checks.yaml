@@ -1,0 +1,36 @@
+name: PR Description Checks
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  check_description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR Description
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const description = context.payload.pull_request.body;
+            const requiredKeywords = [
+              "## Describe your changes",
+              "## Issue ticket number and link",
+              "## Checklist before requesting a review",
+              "- [ ] My code follows the style guidelines of this project",
+              "- [ ] I have performed a self-review of my code",
+              "- [ ] I have commented my code, particularly in hard-to-understand areas",
+              "- [ ] I have made corresponding changes to the documentation",
+              "* **Other information**:"
+            ];
+            const missingKeywords = requiredKeywords.filter(keyword => !description.includes(keyword));
+            if (missingKeywords.length > 0) {
+              const comment = missingKeywords.map(keyword => `- Missing: ${keyword}`).join('\n');
+              github.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `⚠️ Your pull request is missing some required keywords in the description:\n${comment}\nPlease make sure to include them for better clarity and understanding.`
+              });
+            }
