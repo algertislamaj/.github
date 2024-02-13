@@ -13,6 +13,6 @@ jobs:
       uses: madrapps/add-reviewers@v1
       with:
         token: ${{ secrets.GH_TOKEN }}
-        reviewers: albionh, arm4n0
+        reviewers: "albionh,arm4n0"
         re-request-when-approved: true
         re-request-when-changes-requested: true
