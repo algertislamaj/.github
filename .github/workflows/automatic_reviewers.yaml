@@ -1,3 +1,5 @@
+# This pipeline automatically adds reviewrs to the pull request.
+
 name: Add Reviewers
 
 on:
@@ -11,6 +13,6 @@ jobs:
       uses: madrapps/add-reviewers@v1
       with:
         token: ${{ secrets.GH_TOKEN }}
-        reviewers: albionh
+        reviewers: albionh, arm4n0
         re-request-when-approved: true
         re-request-when-changes-requested: true
