@@ -1,4 +1,4 @@
-# # This pipeline automatically adds reviewrs to the pull request.
+# # This pipeline automatically adds reviewers to the pull request.
 
 # name: Add Reviewers
 
