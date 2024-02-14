@@ -12,7 +12,7 @@ jobs:
           github-token: ${{ secrets.GH_TOKEN }}
           script: |
             const fs = require('fs');
-            const path = '.github/ISSUE_TEMPLATE/issue_template.md'; // Adjust the path to your issue template file
+            const path = '.github/issue_template.md';
             const template = fs.readFileSync(path, 'utf8');
             const newDescription = `## Issue\n\n${template}`;
             github.issues.update({
