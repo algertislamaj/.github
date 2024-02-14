@@ -1,0 +1,25 @@
+name: PR Template
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  update_pr_description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update PR Description
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = '.github/ISSUE_TEMPLATE/pull_request_template.md';
+            const template = fs.readFileSync(path, 'utf8');
+            const newDescription = `## Pull Request\n\n${template}`;
+            github.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              body: newDescription
+            });
