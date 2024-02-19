@@ -12,5 +12,6 @@ jobs:
     steps:
       - uses: actions/add-to-project@main
         with:
-          project-url: https://github.com/orgs/LHIND-TIA-CoP/projects/2
+          project-url: https://github.com/users/algertislamaj/projects/1
+
           github-token: ${{ secrets.GH_TOKEN }}
