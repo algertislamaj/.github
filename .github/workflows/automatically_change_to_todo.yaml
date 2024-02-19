@@ -11,6 +11,6 @@ jobs:
       - name: Move issue to project board
         uses: alex-page/github-project-automation-plus@v0.8.3
         with:
-          project: Backlog List
-          column: Todo
+          project: Backstage-IDP
+          column: Iteration 1 (30 Jan - 13 Feb 2024)
           repo-token: ${{ secrets.GH_TOKEN }}
