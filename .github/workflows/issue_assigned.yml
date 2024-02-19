@@ -1,18 +1,20 @@
-name: Update Issue State
+name: Move assigned issues to Todo column
 
 on:
   issues:
     types: [assigned]
 
 jobs:
-  update_issue_state:
+  move-issue-to-todo-column:
+    name: Move issues to Todo column
     runs-on: ubuntu-latest
     steps:
-      - name: Update issue state
-        run: |
-          curl \
-            -X PATCH \
-            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }} \
-            -d '{"state": "todo"}'
+      - name: Move issue to 'Todo' column
+        uses: fojia/action-move-issues-to-column@master
+        with:
+          project: 'Basckstage-IDP'
+          column: 'Todo'
+          owner: 'algertislamaj'
+          repo: 'test2'
+          type: 'repo'
+          github_token: ${{ secrets.GH_TOKEN }}
