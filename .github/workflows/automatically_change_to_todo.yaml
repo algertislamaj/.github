@@ -11,6 +11,6 @@ jobs:
       - name: Move issue to project board
         uses: alex-page/github-project-automation-plus@v0.8.3
         with:
-          project-url: https://github.com/orgs/LHIND-TIA-CoP/projects/2
+          project: Backstage-IDP
           column: Todo
           repo-token: ${{ secrets.GH_TOKEN }}
