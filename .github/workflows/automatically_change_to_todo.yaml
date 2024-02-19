@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Move issue to project board
-        uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43
+        uses: alex-page/github-project-automation-plus@v0.8.3
         with:
-          project: Backstage-IDP
-          column: Todo
+          project: "Backstage-IDP"
+          column: "Todo"
           repo-token: ${{ secrets.GH_TOKEN }}
