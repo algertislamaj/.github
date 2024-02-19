@@ -1,0 +1,18 @@
+name: Update issue status
+
+on:
+  issues:
+    types: [assigned]
+
+jobs:
+  update-issue-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Update issue status
+        uses: peter-evans/update-status-action@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          state: todo
