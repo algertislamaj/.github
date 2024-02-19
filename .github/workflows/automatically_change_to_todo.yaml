@@ -12,5 +12,5 @@ jobs:
         uses: alex-page/github-project-automation-plus@v0.8.3
         with:
           project: Backstage-IDP
-          column: Iteration 1 (30 Jan - 13 Feb 2024)
+          column: Todo
           repo-token: ${{ secrets.GH_TOKEN }}
