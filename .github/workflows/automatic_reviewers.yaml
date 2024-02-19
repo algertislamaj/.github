@@ -1,19 +1,19 @@
-# # This pipeline automatically adds reviewers to the pull request.
+# This pipeline automatically adds reviewers to the pull request.
 
-# name: Add Reviewers
+name: Add Reviewers
 
-# on:
-#   pull_request:
-#     types: [opened, edited]
+on:
+  pull_request:
+    types: [opened, edited]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Add Reviewers
-#       uses: madrapps/add-reviewers@v1
-#       with:
-#         token: ${{ secrets.GH_TOKEN }}
-#         reviewers: "albionh,arm4n0"
-#         re-request-when-approved: true
-#         re-request-when-changes-requested: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add Reviewers
+      uses: madrapps/add-reviewers@v1
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+        reviewers: "algertislamaj"
+        re-request-when-approved: true
+        re-request-when-changes-requested: true
