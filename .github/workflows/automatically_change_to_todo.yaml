@@ -19,7 +19,7 @@ jobs:
       - name: Get Todo column ID
         id: get_todo_column_id
         run: |
-          PROJECT_ID= PVT_kwHOBVv5284AcaFi # Replace with your project ID
+          PROJECT_ID=PVT_kwHOBVv5284AcaFi # Replace with your project ID
           COLUMN_NAME="Todo" # Replace with the name of your Todo column
           COLUMN_ID=$(curl -s -H "Accept: application/vnd.github.inertia-preview+json" \
             -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
