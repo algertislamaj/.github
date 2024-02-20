@@ -1,16 +1,22 @@
-# name: Issue Assigned Workflow
+name: Move Assigned Issues
 
-# on:
-#   issues:
-#     types: [assigned]
+on:
+  issues:
+    types: [assigned]
 
-# jobs:
-#   automate-project-columns:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Move issue to project board
-#         uses: alex-page/github-project-automation-plus@v0.8.3
-#         with:
-#           project: Backstage-IDP
-#           column: Todo
-#           repo-token: ${{ secrets.GH_TOKEN }}
+jobs:
+  move-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Move Issue
+        run: |
+          ISSUE_NUMBER=$(jq -r '.issue.number' "$GITHUB_EVENT_PATH")
+          COLUMN_ID="f75ad846"
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
+            "https://api.github.com/projects/columns/cards" \
+            -d "{\"content_id\": $ISSUE_NUMBER, \"content_type\": \"Issue\", \"column_id\": \"$COLUMN_ID\"}"

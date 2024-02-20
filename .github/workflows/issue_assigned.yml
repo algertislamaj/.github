@@ -12,7 +12,7 @@ jobs:
       - name: Move issue to 'Todo' column
         uses: fojia/action-move-issues-to-column@master
         with:
-          project: 'Test'
+          project: "Test"
           column: 'Todo'
           owner: 'algertislamaj'
           repo: 'test2'
