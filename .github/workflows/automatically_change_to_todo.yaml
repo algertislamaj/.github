@@ -1,37 +1,16 @@
-name: Move Issue to Todo Column
+name: Move card
 
 on:
+
   issues:
     types: [assigned]
 
 jobs:
-  move-issue:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Extract issue details
-        run: |
-          ISSUE_NUMBER=$(jq -r '.issue.number' "$GITHUB_EVENT_PATH")
-          echo "Issue Number: $ISSUE_NUMBER"
-          OWNER=$(jq -r '.repository.owner.login' "$GITHUB_EVENT_PATH")
-          REPO=$(jq -r '.repository.name' "$GITHUB_EVENT_PATH")
-          echo "Repository: $OWNER/$REPO"
-
-      - name: Get Todo column ID
-        id: get_todo_column_id
-        run: |
-          PROJECT_ID=PVT_kwHOBVv5284AcaFi # Replace with your project ID
-          COLUMN_NAME="Todo" # Replace with the name of your Todo column
-          COLUMN_ID=$(curl -s -H "Accept: application/vnd.github.inertia-preview+json" \
-            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            "https://api.github.com/projects/$PROJECT_ID/columns" | \
-            jq -r '.[] | select(.name == "'"$COLUMN_NAME"'") | .id')
-          echo "::set-output name=column_id::$COLUMN_ID"
-
-      - name: Move Issue to Todo column
-        run: |
-          COLUMN_ID="${{ steps.get_todo_column_id.outputs.column_id }}"
-          curl -X POST \
-            -H "Accept: application/vnd.github.inertia-preview+json" \
-            -H "Authorization: token ${{ secrets.GH_TOKEN }}" \
-            "https://api.github.com/projects/columns/$COLUMN_ID/cards" \
-            -d "{\"content_id\": $ISSUE_NUMBER, \"content_type\": \"Issue\"}"
+      - uses: ineshbose/project-card-action@v1
+        with:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          TARGET_COLUMN: 'Todo'
