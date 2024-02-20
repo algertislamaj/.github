@@ -1,16 +1,16 @@
-name: Move card
+name: Assign issues
 
 on:
-
   issues:
     types: [assigned]
 
 jobs:
-  build:
+  assign:
+    name: Assign issues to project
     runs-on: ubuntu-latest
     steps:
-      - uses: ineshbose/project-card-action@v1
+      - name: Assign issues to project
+        uses: technote-space/create-project-card-action@v1
         with:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          TARGET_COLUMN: 'Todo'
+          PROJECT: Test
+          COLUMN: To do
