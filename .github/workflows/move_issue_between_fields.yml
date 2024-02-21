@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Update status to "Todo"
-        if: github.event.issue.event == 'assigned'
+        if: github.event_name == 'assigned'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
           project-url: https://github.com/users/algertislamaj/projects/1
@@ -23,7 +23,7 @@ jobs:
           field-name: "Status"
           field-value: "Todo"
       - name: Update status to "Done"
-        if: github.event.issue.event == 'closed'
+        if: github.event_name == 'closed'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
           project-url: https://github.com/users/algertislamaj/projects/1
@@ -31,7 +31,7 @@ jobs:
           field-name: "Status"
           field-value: "Done"
       - name: Update status to "In Progress"
-        if: github.event.issue.event == 'reopened'
+        if: github.event_name == 'reopened'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
           project-url: https://github.com/users/algertislamaj/projects/1
