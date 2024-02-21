@@ -1,9 +1,9 @@
-name: Move issues between fields
-
-# This pipeline moves issues between fields based on what has happened to them.
-# If the issue is assigned to someone pipeline moves issues to the field "Todo". 
+# This pipeline moves issues between fields based on how they change.
+# If the issue is assigned to someone the pipeline moves issues to the field "Todo". 
 # If the issue is closed, it moves it to the field "Done". 
 # If the issue is reopened, it moves it to the field "In Progress". 
+
+name: Move issues between fields
 
 on:
   issues:
