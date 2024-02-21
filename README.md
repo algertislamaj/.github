@@ -12,6 +12,8 @@ Before using these workflows, follow these setup instructions:
 
 3. **Update Project URL**: Modify the `PROJECT_URL` parameter in your secrets to match your project. The `PROJECT_URL` should be in the format `https://github.com/orgs|users/<ownerName>/projects/<projectNumber>`.
 
+4. **Include the Right Issue Number**: When you're making a pull request, make sure to mention the issue number it's connected to, like saying "Issue #123" in the PR body. This helps the system link your pull request to the correct issue.
+
 ## Usage
 
 After completing the setup, the workflows will automatically manage the project based on the defined configurations. Ensure that the workflows are properly configured and tailored to the specific requirements of your project.

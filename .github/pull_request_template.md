@@ -2,6 +2,8 @@
 
 ## Issue ticket number and link
 
+Issue #
+
 ## Checklist before requesting a review
 
 - [ ] My code follows the style guidelines of this project
