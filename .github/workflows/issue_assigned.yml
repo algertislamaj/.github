@@ -1,30 +1,18 @@
-name: Move assigned and unassigned issues to Todo field
+name: Move assigned issues to Todo field
 
 on:
   issues:
-    types: [assigned, unassigned]
+    types: [assigned]
 
 jobs:
-  update-status-assigned:
+  update-status:
     runs-on: ubuntu-latest
-    if: github.event.action == 'assigned'
+    timeout-minutes: 5
     steps:
-      - name: Update status to "Todo" for assigned issues
+      - name: Update status to "In Review"
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
           project-url: https://github.com/users/algertislamaj/projects/1
           github-token: ${{ secrets.GH_TOKEN }}
           field-name: "Status"
           field-value: "Todo"
-
-  update-status-unassigned:
-    runs-on: ubuntu-latest
-    if: github.event.action == 'unassigned'
-    steps:
-      - name: Update status to "No Status" for unassigned issues
-        uses: nipe0324/update-project-v2-item-field@v2.0.1
-        with:
-          project-url: https://github.com/users/algertislamaj/projects/1
-          github-token: ${{ secrets.GH_TOKEN }}
-          field-name: "Status"
-          field-value: "No Status"
