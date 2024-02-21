@@ -1,3 +1,5 @@
+# This pipeline automatically adds new issues to the project specified in the url.
+
 name: Add new issue to our main project
 
 on:
