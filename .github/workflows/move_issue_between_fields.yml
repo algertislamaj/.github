@@ -18,7 +18,7 @@ jobs:
         if: github.event.action == 'assigned'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
-          project-url: https://github.com/users/algertislamaj/projects/1
+          project-url: ${{ secrets.PROJECT_URL }}
           github-token: ${{ secrets.GH_TOKEN }}
           field-name: "Status"
           field-value: "Todo"
@@ -26,7 +26,7 @@ jobs:
         if: github.event.action == 'closed'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
-          project-url: https://github.com/users/algertislamaj/projects/1
+          project-url: ${{ secrets.PROJECT_URL }}
           github-token: ${{ secrets.GH_TOKEN }}
           field-name: "Status"
           field-value: "Done"
@@ -34,7 +34,7 @@ jobs:
         if: github.event.action == 'reopened'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
-          project-url: https://github.com/users/algertislamaj/projects/1
+          project-url: ${{ secrets.PROJECT_URL }}
           github-token: ${{ secrets.GH_TOKEN }}
           field-name: "Status"
           field-value: "In Progress"
