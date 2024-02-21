@@ -14,6 +14,6 @@ jobs:
       uses: madrapps/add-reviewers@v1
       with:
         token: ${{ secrets.GH_TOKEN }}
-        reviewers: "algertislamaj"
+        reviewers: "${{ secrets.REVIEWER_1 }}, ${{ secrets.REVIEWER_2 }}"
         re-request-when-approved: true
         re-request-when-changes-requested: true
