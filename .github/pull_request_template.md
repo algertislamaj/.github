@@ -2,7 +2,7 @@
 
 ## Issue ticket number and link
 
-Issue #
+Issue nr#
 
 ## Checklist before requesting a review
 
