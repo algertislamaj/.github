@@ -14,6 +14,8 @@ Before using these workflows, follow these setup instructions:
 
 4. **Include the Right Issue Number**: When you're making a pull request, make sure to mention the issue number it's connected to, like saying "Issue #123" in the PR body. This helps the system link your pull request to the correct issue.
 
+5. **Add reviewers**: Set the 'REVIEWER_1' and 'REVIEWER_2' as secrets for your repo with the appropriate values.
+
 ## Usage
 
 After completing the setup, the workflows will automatically manage the project based on the defined configurations. Ensure that the workflows are properly configured and tailored to the specific requirements of your project.
