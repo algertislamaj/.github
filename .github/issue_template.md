@@ -1,8 +1,3 @@
----
-name: Issue Template
-about: Template for creating new issues
----
-
 # Issue Description
 
 ## Details
