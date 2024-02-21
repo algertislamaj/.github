@@ -1,18 +1,40 @@
-name: Move assigned issues to Todo field
+name: Move issues between fields
+
+# This pipeline moves issues between fields based on what has happened to them.
+# If the issue is assigned to someone pipeline moves issues to the field "Todo". 
+# If the issue is closed, it moves it to the field "Done". 
+# If the issue is reopened, it moves it to the field "In Progress". 
 
 on:
   issues:
-    types: [assigned]
+    types: [assigned, closed, reopened]
 
 jobs:
   update-status:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Update status to "In Review"
+      - name: Update status to "Todo"
+        if: github.event.issue.event == 'assigned'
         uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
           project-url: https://github.com/users/algertislamaj/projects/1
           github-token: ${{ secrets.GH_TOKEN }}
           field-name: "Status"
           field-value: "Todo"
+      - name: Update status to "Done"
+        if: github.event.issue.event == 'closed'
+        uses: nipe0324/update-project-v2-item-field@v2.0.1
+        with:
+          project-url: https://github.com/users/algertislamaj/projects/1
+          github-token: ${{ secrets.GH_TOKEN }}
+          field-name: "Status"
+          field-value: "Done"
+      - name: Update status to "In Progress"
+        if: github.event.issue.event == 'reopened'
+        uses: nipe0324/update-project-v2-item-field@v2.0.1
+        with:
+          project-url: https://github.com/users/algertislamaj/projects/1
+          github-token: ${{ secrets.GH_TOKEN }}
+          field-name: "Status"
+          field-value: "In Progress"
