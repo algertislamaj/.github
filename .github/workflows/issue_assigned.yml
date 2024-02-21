@@ -1,20 +1,18 @@
-name: Move assigned issues to Todo column
+name: Move assigned issues to Todo field
 
 on:
   issues:
     types: [assigned]
 
 jobs:
-  move-issue-to-todo-column:
-    name: Move issues to Todo column
+  update-status:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - name: Move issue to 'Todo' column
-        uses: fojia/action-move-issues-to-column@master
+      - name: Update status to "In Review"
+        uses: nipe0324/update-project-v2-item-field@v2.0.1
         with:
-          project: "Test"
-          column: 'Todo'
-          owner: 'algertislamaj'
-          repo: 'test2'
-          type: 'repo'
-          github_token: ${{ secrets.GH_TOKEN }}
+          project-url: https://github.com/users/algertislamaj/projects/1
+          github-token: ${{ secrets.GH_TOKEN }}
+          field-name: "Status"
+          field-value: "Todo"
